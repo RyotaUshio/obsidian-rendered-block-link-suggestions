@@ -6,7 +6,7 @@ export function extractFirstNLines(text: string, n: number) {
 export function render(el: HTMLElement, cb: (containerEl: HTMLElement) => void) {
 	const titleEl = el.querySelector<HTMLElement>('.suggestion-title');
 	if (titleEl) {
-		const containerEl = createDiv({cls: ['markdown-rendered']});
+		const containerEl = createDiv({cls: ['markdown-preview-view', 'markdown-rendered']});
 		titleEl.replaceChildren(containerEl);
 		cb(containerEl);
 	};
