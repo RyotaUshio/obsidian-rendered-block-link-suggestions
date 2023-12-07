@@ -1,4 +1,4 @@
-# Obsidian Enhanced Link Suggestions
+# Obsidian Rendered Block Link Suggestions
 
 This is an [Obsidian.md](https://obsidian.md) plugin that enhances the built-in link suggestion by rendering markdown in block link suggestions (i.e. `[[note title^` or `[[^`).
 
