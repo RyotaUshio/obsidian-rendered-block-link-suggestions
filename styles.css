@@ -1,34 +1,5 @@
-/* @settings
-
-name: Enhanced Link Suggestions
-id: enhanced-link-suggestions
-settings:
-    -
-        id: quick-preview-font-size
-        title: Font size for quick preview
-        type: variable-number-slider
-        min: 10
-        max: 200
-        step: 1
-        default: 100
-        format: "%"
-*/
-
 .suggestion-item[data-item-type="block"][data-item-node-type="comment"] {
     color: var(--code-comment);
-}
-
-.alert-hover-editor .setting-item-description {
-    color: #ea5555;
-}
-
-.enhanced-link-suggestions.hover-popover .markdown-rendered {
-    font-size: var(--quick-preview-font-size);
-}
-
-/* Make sure that the quick preview is on top of the quick switcher modal and the link suggestions */
-.popover.hover-popover.enhanced-link-suggestions {
-    z-index: calc(max(var(--layer-modal), var(--layer-notice)) + 1);
 }
 
 .suggestion-content {

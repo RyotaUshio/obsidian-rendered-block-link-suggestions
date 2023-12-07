@@ -1,6 +1,5 @@
-import { Modifier, PluginSettingTab, Setting } from 'obsidian';
+import { PluginSettingTab, Setting } from 'obsidian';
 import EnhancedLinkSuggestionsPlugin from './main';
-import { getModifierNameInPlatform } from 'utils';
 
 
 // Inspired by https://stackoverflow.com/a/50851710/13613783
@@ -28,8 +27,6 @@ export interface EnhancedLinkSuggestionsSettings {
 	elementLines: number;
 	tableLines: number;
 	commentLines: number;
-	modifierToPreview: Modifier;
-	lazyHide: boolean;
 	dev: boolean;
 	disableClose: boolean;
 }
@@ -55,8 +52,6 @@ export const DEFAULT_SETTINGS: EnhancedLinkSuggestionsSettings = {
 	elementLines: 0,
 	tableLines: 0,
 	commentLines: 0,
-	modifierToPreview: 'Alt',
-	lazyHide: true,
 	dev: false,
 	disableClose: false,
 }
@@ -115,15 +110,6 @@ export class EnhancedLinkSuggestionsSettingTab extends PluginSettingTab {
 	display(): void {
 		this.containerEl.empty();
 
-		new Setting(this.containerEl).setName('Quick preview').setHeading();
-		this.addDropdowenSetting('modifierToPreview', ['Mod', 'Ctrl', 'Meta', 'Shift', 'Alt'], getModifierNameInPlatform)
-			.setName('Modifier key for quick preview')
-			.setDesc('Hold down this key to preview the link without clicking.');
-		this.addToggleSetting('lazyHide')
-			.setName("Don't close the current preview until the next preview is ready")
-			.setDesc('If turned on, pressing arrow keys or hovering the mouse over the suggestions while holding the modifier key will not immediately close the preview, but instead wait for the preview for the newly selected suggestion to load.');
-
-		new Setting(this.containerEl).setName('Block markdown rendering').setHeading();
 		this.addToggleSetting('paragraph').setName('Render paragraphs');
 		this.addSliderSetting('paragraphLines', 0, 10, 1)
 			.setName('Paragraph line limit')
@@ -170,7 +156,7 @@ export class EnhancedLinkSuggestionsSettingTab extends PluginSettingTab {
 			.setDesc('Show metadata about suggestion items in the dev console.');
 		this.addToggleSetting('disableClose', (disable) => {
 			const suggest = this.plugin.getBuiltInSuggest();
-			if (!disable && suggest.isOpen) suggest.close();
+			if (!disable) suggest.close();
 		}).setName('Prevent the suggestion box from closing')
 			.setDesc('Useful for inspecting the suggestion box.');
 	}
