@@ -13,7 +13,7 @@ export default class EnhancedLinkSuggestionsPlugin extends Plugin {
 		await this.loadSettings();
 		await this.saveSettings();
 		this.addSettingTab(new EnhancedLinkSuggestionsSettingTab(this));
-		this.app.workspace.onLayoutReady(() => this.patchRenderSuggestion());
+		this.app.workspace.onLayoutReady(() => this.patchBuiltInSuggest());
 	}
 
 	async loadSettings() {
@@ -29,7 +29,7 @@ export default class EnhancedLinkSuggestionsPlugin extends Plugin {
 		return this.app.workspace.editorSuggest.suggests[0];
 	}
 
-	patchRenderSuggestion() {
+	patchBuiltInSuggest() {
 		const suggest = this.getBuiltInSuggest();
 		const plugin = this;
 		const app = this.app;
@@ -65,6 +65,12 @@ export default class EnhancedLinkSuggestionsPlugin extends Plugin {
 							containerEl.querySelectorAll('.copy-code-button').forEach((el) => el.remove());
 						});
 					}
+				}
+			},
+			close(old) {
+				return function () {
+					if (plugin.settings.disableClose) return;
+					old.call(this);
 				}
 			}
 		}));
