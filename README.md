@@ -1,6 +1,6 @@
 # Obsidian Rendered Block Link Suggestions
 
-This is an [Obsidian.md](https://obsidian.md) plugin that enhances the built-in link suggestion by rendering markdown in block link suggestions (i.e. `[[note title^` or `[[^`).
+This is an [Obsidian.md](https://obsidian.md) plugin that enhances the built-in block link suggestion (the auto-completion triggered when typing `[[note title^` or `[[^`) by rendering markdown in it.
 
 ## Installation
 
