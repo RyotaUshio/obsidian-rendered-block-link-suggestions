@@ -1,4 +1,4 @@
-import { MarkdownRenderer, Plugin } from 'obsidian';
+import { Component, MarkdownRenderer, Plugin } from 'obsidian';
 import { around } from 'monkey-around';
 
 import { DEFAULT_SETTINGS, EnhancedLinkSuggestionsSettings, EnhancedLinkSuggestionsSettingTab } from 'settings';
@@ -67,10 +67,18 @@ export default class EnhancedLinkSuggestionsPlugin extends Plugin {
 					}
 				}
 			},
+			open(old) {
+				return function () {
+					if (!this.renderedBlockLinkSuggestionsComponent) this.renderedBlockLinkSuggestionsComponent = new Component();
+					this.renderedBlockLinkSuggestionsComponent.load();
+					old.call(this);
+				}
+			},
 			close(old) {
 				return function () {
 					if (plugin.settings.disableClose) return;
 					old.call(this);
+					this.renderedBlockLinkSuggestionsComponent?.unload();
 				}
 			}
 		}));
