@@ -61,7 +61,7 @@ export default class EnhancedLinkSuggestionsPlugin extends Plugin {
 
 						render(el, async (containerEl) => {
 							containerEl.setAttribute('data-line', item.node.position.start.line.toString());
-							await MarkdownRenderer.render(app, text, containerEl, item.file.path, this.manager);
+							await MarkdownRenderer.render(app, text, containerEl, item.file.path, this.renderedBlockLinkSuggestionsComponent);
 							containerEl.querySelectorAll('.copy-code-button').forEach((el) => el.remove());
 						});
 					}
