@@ -13,9 +13,6 @@
 .suggestion-title > .markdown-rendered {
     font-size: calc(var(--font-ui-medium) / var(--font-text-size) * 100%);
     padding: 0;
-}
-
-.suggestion-title > .markdown-rendered {
     --p-spacing: calc(var(--p-spacing-old) * 0.15);
 }
 
