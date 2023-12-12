@@ -107,47 +107,72 @@ export class EnhancedLinkSuggestionsSettingTab extends PluginSettingTab {
 			});
 	}
 
+	addHeading(heading: string) {
+		return new Setting(this.containerEl).setName(heading).setHeading();
+	}
+
 	display(): void {
 		this.containerEl.empty();
 
-		this.addToggleSetting('paragraph').setName('Render paragraphs');
+		this.addHeading('Paragraphs');
+		this.addToggleSetting('paragraph').setName('Enable rendering');
 		this.addSliderSetting('paragraphLines', 0, 10, 1)
-			.setName('Paragraph line limit')
-			.setDesc('Maximum number of lines to render. Set to 0 to disable line limit.');
-		this.addToggleSetting('heading').setName('Render headings');
-		this.addToggleSetting('callout').setName('Render callouts');
+			.setName('Maximum number of lines to render')
+			.setDesc('Set to 0 to render all lines.');
+
+		this.addHeading('Headings');
+		this.addToggleSetting('heading').setName('Enable rendering');
+
+		this.addHeading('Callouts');
+		this.addToggleSetting('callout').setName('Enable rendering');
 		this.addSliderSetting('calloutLines', 0, 10, 1)
-			.setName('Callout line limit')
-			.setDesc('Maximum number of lines to render. Set to 0 to disable line limit.');
-		this.addToggleSetting('blockquote').setName('Render blockquotes');
+			.setName('Maximum number of lines to render')
+			.setDesc('Set to 0 to render all lines. You can render callout titles only by setting this to 1.');
+
+		this.addHeading('Blockquotes');
+		this.addToggleSetting('blockquote').setName('Enable rendering');
 		this.addSliderSetting('blockquoteLines', 0, 10, 1)
-			.setName('Blockquote line limit')
-			.setDesc('Maximum number of lines to render. Set to 0 to disable line limit.');
-		this.addToggleSetting('code').setName('Render code blocks');
+			.setName('Maximum number of lines to render')
+			.setDesc('Set to 0 to render all lines.');
+
+		this.addHeading('Code blocks');
+		this.addToggleSetting('code').setName('Enable rendering');
 		this.addSliderSetting('codeLines', 0, 10, 1)
-			.setName('Code block line limit')
-			.setDesc('Maximum number of lines to render. Set to 0 to disable line limit.');
-		this.addToggleSetting('math').setName('Render math blocks');
-		this.addToggleSetting('listItem').setName('Render list items');
+			.setName('Maximum number of lines to render')
+			.setDesc('Set to 0 to render all lines.');
+
+		this.addHeading('Math blocks');
+		this.addToggleSetting('math').setName('Enable rendering');
+
+		this.addHeading('List items');
+		this.addToggleSetting('listItem').setName('Enable rendering');
 		this.addSliderSetting('listItemLines', 0, 10, 1)
-			.setName('List item line limit')
-			.setDesc('Maximum number of lines to render. Set to 0 to disable line limit.');
-		this.addToggleSetting('table').setName('Render tables');
+			.setName('Maximum number of lines to render')
+			.setDesc('Set to 0 to render all lines.');
+
+		this.addHeading('Tables');
+		this.addToggleSetting('table').setName('Enable rendering');
 		this.addSliderSetting('tableLines', 0, 10, 1)
-			.setName('Table line limit')
-			.setDesc('Maximum number of lines to render. Set to 0 to disable line limit.');
-		this.addToggleSetting('footnoteDefinition').setName('Render footnote definitions');
+			.setName('Maximum number of lines to render')
+			.setDesc('Set to 0 to render all lines.');
+
+		this.addHeading('Footnote definitions');
+		this.addToggleSetting('footnoteDefinition').setName('Enable rendering');
 		this.addSliderSetting('footnoteDefinitionLines', 0, 10, 1)
-			.setName('Footnote definition line limit')
-			.setDesc('Maximum number of lines to render. Set to 0 to disable line limit.');
-		this.addToggleSetting('element').setName('Render elements');
+			.setName('Maximum number of lines to render')
+			.setDesc('Set to 0 to render all lines.');
+
+		this.addHeading('Elements');
+		this.addToggleSetting('element').setName('Enable rendering');
 		this.addSliderSetting('elementLines', 0, 10, 1)
-			.setName('Element line limit')
-			.setDesc('Maximum number of lines to render. Set to 0 to disable line limit.');
-		this.addToggleSetting('comment').setName('Render comments');
+			.setName('Maximum number of lines to render')
+			.setDesc('Set to 0 to render all lines.');
+
+		this.addHeading('Comments');
+		this.addToggleSetting('comment').setName('Enable rendering');
 		this.addSliderSetting('commentLines', 0, 10, 1)
-			.setName('Comment line limit')
-			.setDesc('Maximum number of lines to render. Set to 0 to disable line limit.');
+			.setName('Maximum number of lines to render')
+			.setDesc('Set to 0 to render all lines.');
 
 		new Setting(this.containerEl).setName('Debug mode (advanced)').setHeading();
 
