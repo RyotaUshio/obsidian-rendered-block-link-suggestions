@@ -1,3 +1,7 @@
+.suggestion-item {
+    --p-spacing-old: var(--p-spacing);
+}
+
 .suggestion-item[data-item-type="block"][data-item-node-type="comment"] {
     color: var(--code-comment);
 }
@@ -8,22 +12,14 @@
 
 .suggestion-title > .markdown-rendered {
     font-size: calc(var(--font-ui-medium) / var(--font-text-size) * 100%);
-    padding: var(--size-4-2);
+    padding: 0;
 }
 
-.suggestion-title > .markdown-rendered > * {
-    margin-block-start: calc(var(--p-spacing) * 0.3);
-    margin-block-end: calc(var(--p-spacing) * 0.3);
-    margin-left: calc(var(--p-spacing) * 0.1);
-    margin-right: calc(var(--p-spacing) * 0.1);
-
-    & > p {
-        margin-block-start: calc(var(--p-spacing) * 0.3);
-        margin-block-end: calc(var(--p-spacing) * 0.3);
-    }
+.suggestion-title > .markdown-rendered {
+    --p-spacing: calc(var(--p-spacing-old) * 0.15);
 }
 
 .suggestion-title > .markdown-rendered mjx-container[display="true"] {
-    margin-top: calc(var(--p-spacing) * 0.3);
-    margin-bottom: calc(var(--p-spacing) * 0.3);
+    margin-top: var(--p-spacing);
+    margin-bottom: var(--p-spacing);
 }
