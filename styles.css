@@ -2,7 +2,7 @@
     --p-spacing-old: var(--p-spacing);
 }
 
-.suggestion-item[data-item-type="block"][data-item-node-type="comment"] {
+.suggestion-item[data-item-type="block"][data-item-node-type="comment"] .markdown-rendered {
     color: var(--code-comment);
 }
 
