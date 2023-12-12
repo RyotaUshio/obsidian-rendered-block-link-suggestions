@@ -1,7 +1,7 @@
 {
 	"id": "rendered-block-link-suggestions",
 	"name": "Rendered Block Link Suggestions",
-	"version": "0.4.6",
+	"version": "0.4.7",
 	"minAppVersion": "1.3.5",
 	"description": "Upgrade Obsidian's built-in link suggestions with block markdown rendering.",
 	"author": "Ryota Ushio",

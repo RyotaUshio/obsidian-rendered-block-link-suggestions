@@ -1,6 +1,6 @@
 {
 	"name": "obsidian-rendered-block-link-suggestions",
-	"version": "0.4.6",
+	"version": "0.4.7",
 	"description": "Upgrade Obsidian's built-in link suggestions with block markdown rendering.",
 	"scripts": {
 		"dev": "node esbuild.config.mjs",
