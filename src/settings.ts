@@ -27,6 +27,7 @@ export interface EnhancedLinkSuggestionsSettings {
 	elementLines: number;
 	tableLines: number;
 	commentLines: number;
+	iembed: boolean;
 	dev: boolean;
 	disableClose: boolean;
 }
@@ -52,6 +53,7 @@ export const DEFAULT_SETTINGS: EnhancedLinkSuggestionsSettings = {
 	elementLines: 0,
 	tableLines: 0,
 	commentLines: 0,
+	iembed: true,
 	dev: false,
 	disableClose: false,
 }
@@ -163,22 +165,26 @@ export class EnhancedLinkSuggestionsSettingTab extends PluginSettingTab {
 			.setDesc('Set to 0 to render all lines.');
 
 		this.addHeading('Footnote definitions');
-		this.addToggleSetting('footnoteDefinition').setName('Enable rendering');
+		this.addToggleSetting('footnoteDefinition')
+			.setName('Enable rendering')
+			.setDesc('Note that this plugin currently does not neccesarily work well along with footnotes. It is recommended to turn this off for now.');
 		this.addSliderSetting('footnoteDefinitionLines', 0, 10, 1)
 			.setName('Maximum number of lines to render')
 			.setDesc('Set to 0 to render all lines.');
 
-		this.addHeading('Elements');
+		this.addHeading('Other elements');
 		this.addToggleSetting('element').setName('Enable rendering');
 		this.addSliderSetting('elementLines', 0, 10, 1)
 			.setName('Maximum number of lines to render')
 			.setDesc('Set to 0 to render all lines.');
 
-		new Setting(this.containerEl).setName('Debug mode (advanced)').setHeading();
+		this.addHeading('Embeds');
+		this.addToggleSetting('iembed').setName('Render embedded content');
+
+		this.addHeading('Debug mode (advanced)');
 
 		this.addToggleSetting('dev')
-			.setName('Log suggestion items to console')
-			.setDesc('Show metadata about suggestion items in the dev console.');
+			.setName('Show selected suggestion in console')
 		this.addToggleSetting('disableClose', (disable) => {
 			const suggest = this.plugin.getBuiltInSuggest();
 			if (!disable) suggest.close();

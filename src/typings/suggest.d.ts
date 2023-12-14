@@ -33,8 +33,8 @@ interface BlockLinkInfo extends LinkInfo {
 }
 
 interface Node {
-    type: 'code' | 'blockquote' | 'heading' | 'paragraph' | 'callout' | 'math' | 'listItem' | 'footnoteDefinition' | 'element' | 'table' | 'comment';
-    children: Node[];
+    type: 'code' | 'blockquote' | 'heading' | 'paragraph' | 'callout' | 'math' | 'listItem' | 'footnoteDefinition' | 'element' | 'table' | 'comment' | 'iembed';
+    children?: Node[];
     position: {
         start: Loc;
         end: Loc;

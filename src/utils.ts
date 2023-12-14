@@ -11,3 +11,8 @@ export function render(el: HTMLElement, cb: (containerEl: HTMLElement) => void) 
 		cb(containerEl);
 	};
 }
+
+export function getLeaves<Vertex extends {children?: Vertex[]}>(treeRoot: Vertex): Vertex[] {
+	if (!treeRoot.children) return [treeRoot];
+	return treeRoot.children.flatMap(getLeaves);
+}

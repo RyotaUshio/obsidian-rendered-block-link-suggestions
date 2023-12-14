@@ -2,6 +2,11 @@
 
 This is an [Obsidian.md](https://obsidian.md) plugin that enhances the built-in block link suggestion (the auto-completion triggered when typing `[[note title^` or `[[^`) by rendering markdown in it.
 
+| Without this plugin | With this plugin |
+| ------------------- | ---------------- |
+| <img width="562" alt="image" src="https://github.com/RyotaUshio/obsidian-rendered-block-link-suggestions/assets/72342591/0b4b59d6-57b6-4be3-b938-0d6a2cd6243b"> | <img width="562" alt="image" src="https://github.com/RyotaUshio/obsidian-rendered-block-link-suggestions/assets/72342591/b22763c7-5fd5-4a1c-bfa0-2093dbbef484"> |
+
+
 ## Installation
 
 Since this plugin is still in beta, it's not on the community plugin browser yet.
