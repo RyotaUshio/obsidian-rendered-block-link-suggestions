@@ -1,9 +1,10 @@
-import { Component, MarkdownRenderer, Plugin } from 'obsidian';
+import { Component, MarkdownRenderer, Plugin, UserEvent } from 'obsidian';
 import { around } from 'monkey-around';
 
 import { DEFAULT_SETTINGS, EnhancedLinkSuggestionsSettings, EnhancedLinkSuggestionsSettingTab } from 'settings';
 import { extractFirstNLines, render } from 'utils';
 import { BuiltInSuggest, BuiltInSuggestItem } from 'typings/suggest';
+import { Suggestions } from 'typings/obsidian';
 
 
 export default class EnhancedLinkSuggestionsPlugin extends Plugin {
@@ -13,7 +14,10 @@ export default class EnhancedLinkSuggestionsPlugin extends Plugin {
 		await this.loadSettings();
 		await this.saveSettings();
 		this.addSettingTab(new EnhancedLinkSuggestionsSettingTab(this));
-		this.app.workspace.onLayoutReady(() => this.patchBuiltInSuggest());
+		this.app.workspace.onLayoutReady(() => {
+			this.patchBuiltInSuggest();
+			this.patchSetSelectedItem();
+		});
 	}
 
 	async loadSettings() {
@@ -38,8 +42,6 @@ export default class EnhancedLinkSuggestionsPlugin extends Plugin {
 			renderSuggestion(old) {
 				return function (item: BuiltInSuggestItem, el: HTMLElement) {
 					old.call(this, item, el);
-
-					if (plugin.settings.dev) console.log(item);
 
 					el.setAttribute('data-item-type', item.type);
 
@@ -79,6 +81,21 @@ export default class EnhancedLinkSuggestionsPlugin extends Plugin {
 					if (plugin.settings.disableClose) return;
 					old.call(this);
 					this.renderedBlockLinkSuggestionsComponent?.unload();
+				}
+			}
+		}));
+	}
+
+	patchSetSelectedItem() {
+		const plugin = this;
+
+		const suggest = this.getBuiltInSuggest();
+		this.register(around(suggest.suggestions.constructor.prototype, {
+			setSelectedItem(old) {
+				return function (index: number, event: UserEvent | null) {
+					const self = this as Suggestions<BuiltInSuggestItem>;
+					old.call(self, index, event);
+					if (plugin.settings.dev) console.log(self.values[self.selectedItem]);
 				}
 			}
 		}));

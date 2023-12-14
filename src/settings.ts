@@ -39,8 +39,8 @@ export const DEFAULT_SETTINGS: EnhancedLinkSuggestionsSettings = {
 	callout: true,
 	math: true,
 	listItem: true,
-	footnoteDefinition: true,
-	element: true,
+	footnoteDefinition: false,
+	element: false,
 	table: true,
 	comment: true,
 	codeLines: 0,
@@ -156,6 +156,12 @@ export class EnhancedLinkSuggestionsSettingTab extends PluginSettingTab {
 			.setName('Maximum number of lines to render')
 			.setDesc('Set to 0 to render all lines.');
 
+		this.addHeading('Comments');
+		this.addToggleSetting('comment').setName('Enable rendering');
+		this.addSliderSetting('commentLines', 0, 10, 1)
+			.setName('Maximum number of lines to render')
+			.setDesc('Set to 0 to render all lines.');
+
 		this.addHeading('Footnote definitions');
 		this.addToggleSetting('footnoteDefinition').setName('Enable rendering');
 		this.addSliderSetting('footnoteDefinitionLines', 0, 10, 1)
@@ -168,12 +174,6 @@ export class EnhancedLinkSuggestionsSettingTab extends PluginSettingTab {
 			.setName('Maximum number of lines to render')
 			.setDesc('Set to 0 to render all lines.');
 
-		this.addHeading('Comments');
-		this.addToggleSetting('comment').setName('Enable rendering');
-		this.addSliderSetting('commentLines', 0, 10, 1)
-			.setName('Maximum number of lines to render')
-			.setDesc('Set to 0 to render all lines.');
-
 		new Setting(this.containerEl).setName('Debug mode (advanced)').setHeading();
 
 		this.addToggleSetting('dev')
@@ -183,6 +183,6 @@ export class EnhancedLinkSuggestionsSettingTab extends PluginSettingTab {
 			const suggest = this.plugin.getBuiltInSuggest();
 			if (!disable) suggest.close();
 		}).setName('Prevent the suggestion box from closing')
-			.setDesc('Useful for inspecting the suggestion box.');
+			.setDesc('Useful for inspecting the suggestion box DOM.');
 	}
 }
