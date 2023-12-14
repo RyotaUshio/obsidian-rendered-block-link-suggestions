@@ -3,14 +3,20 @@
 name: Rendered Block Link Suggestions
 id: rendered-block-link-suggestions
 settings:
+    - 
+        id: my-info-text
+        description: "It is recommended to turn on the **Prevent the suggestion box from closing** setting while tweaking the style settings below."
+        type: info-text
+        markdown: true
     -
         id: rendered-block-link-suggestions-margin
-        title: Margin size
+        title: Margin size (%)
+        description: "Relative size of the margin around each suggestion item."
         type: variable-number-slider
         min: 0
-        max: 1
-        step: 0.01
-        default: 0.2
+        max: 100
+        step: 1
+        default: 20
 */
 
 .suggestion-item {
@@ -28,7 +34,7 @@ settings:
 .suggestion-title > .markdown-rendered {
     font-size: calc(var(--font-ui-medium) / var(--font-text-size) * 100%);
     padding: 0;
-    --p-spacing: calc(var(--p-spacing-old) * var(--rendered-block-link-suggestions-margin, 0.2));
+    --p-spacing: calc(var(--p-spacing-old) * var(--rendered-block-link-suggestions-margin, 20) / 100);
 
     & mjx-container[display="true"],
     > pre,
