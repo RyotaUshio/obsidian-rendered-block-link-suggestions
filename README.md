@@ -4,14 +4,14 @@ This is an [Obsidian.md](https://obsidian.md) plugin that enhances the built-in 
 
 | Without this plugin | With this plugin |
 | ------------------- | ---------------- |
-| <img width="562" alt="image" src="https://github.com/RyotaUshio/obsidian-rendered-block-link-suggestions/assets/72342591/0b4b59d6-57b6-4be3-b938-0d6a2cd6243b"> | <img width="562" alt="image" src="https://github.com/RyotaUshio/obsidian-rendered-block-link-suggestions/assets/72342591/b22763c7-5fd5-4a1c-bfa0-2093dbbef484"> |
+| ![](https://github.com/RyotaUshio/obsidian-rendered-block-link-suggestions/assets/72342591/0b4b59d6-57b6-4be3-b938-0d6a2cd6243b) | ![](https://github.com/RyotaUshio/obsidian-rendered-block-link-suggestions/assets/72342591/b22763c7-5fd5-4a1c-bfa0-2093dbbef484) |
 
 
 ## Installation
 
-Since this plugin is still in beta, it's not on the community plugin browser yet.
+You can find this plugin in the community plugin browser within Obsidian.
 
-But you can install the latest beta release using [BRAT](https://github.com/TfTHacker/obsidian42-brat):
+You can also install the latest beta release using [BRAT](https://github.com/TfTHacker/obsidian42-brat):
 
 1.  Install BRAT and enable it.
 2.  Go to `Options`. In the `Beta Plugin List` section, click on the `Add Beta plugin` button.
